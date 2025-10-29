@@ -201,7 +201,10 @@ def main():
     axs[0].set_ylabel('Temperature(F)')
     axs[0].grid(True, which='major', color='lightgray')
     axs[0].axhline(y = dwConfig.LoT, color='red', linestyle='--')
-    if max(temp) >= 80:
+    if min(temp) >= 25 and max(temp) <= 100:
+        axs[0].set_ylim(25,100)
+        axs[0].axhline(y = dwConfig.HiT, color='red', linestyle='--')
+    elif max(temp) > 100:
         axs[0].axhline(y = dwConfig.HiT, color='red', linestyle='--')
 
     axs[1].plot(hours, wind, color='green', marker='o', markersize=4, linestyle='-')
@@ -225,6 +228,7 @@ def main():
     axs[3].grid(True, which='major', color='lightgray')
     axs[3].set_axisbelow(True)
 
+    axs[3].set_ylim(0,100)
     axs[3].xaxis.set_major_locator(mdates.HourLocator(byhour=0))
     axs[3].xaxis.set_major_formatter(mdates.DateFormatter('%a %d'))
     axs[3].xaxis.set_minor_locator(mdates.HourLocator(byhour=range(24)))

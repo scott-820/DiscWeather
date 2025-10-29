@@ -15,6 +15,6 @@ HiP = 60        # Above which precip score will be 0
 
 # Relative contributions for temperature, wind and precipitation to overall score / Quality Factor.
 # The total for all 3 must add up to 100.
-MaxTScore = 40
+MaxTScore = 35
 MaxWScore = 35
 MaxPScore = 100 - (MaxTScore + MaxWScore)

@@ -87,13 +87,23 @@ def main():
         inp = input(askString).strip().upper()
         if inp == 'Q':
             sys.exit('\nUser exited program.\n')
-        elif inp == 'C':                            # Need to validate entries before calling getLocation!
+        elif inp == 'C': 
             print('Please enter a US address:\n')
             Street = input('Enter Street number and name: ').strip()
             City = input('Enter US City: ').strip()
             State = input('Enter US State: ').strip()
-            Z = input('Enter ZIP Code: ').strip()
-            Zip = int(Z)
+            goodZip = False
+            while not goodZip:
+                Z = input('Enter ZIP Code: ').strip()
+                if Z.isnumeric() and len(Z) == 5:
+                    try:
+                        Zip = int(Z)
+                        goodZip = True
+                    except ValueError:
+                        print("Invalid Zip Code entry")
+                else:
+                    print("Invalid Zip Code entry")
+
             print()
             match, Lt, Ln = getLocation(Street, City, State, Zip)
             if match:

@@ -4,13 +4,13 @@ daylightOnly = True     # Set to false to allow night predictions for glow disc 
 
 # Thresholds for calculating hourly DiscWeather scores:
 
-LoT = 45        # Below which temp score will be 0. Above which temp score increases to max at MidLoT.
-MidLoT = 70     # Above which temp score will be max
+LoT = 45        # Below which temp score will be 0. Above which temp score increases to max at MidLoT
+MidLoT = 70     # Above which temp score will be max until MidHiT is reached
 MidHiT = 83     # Above which temp score attenuates to 0 at HiT
 HiT = 95        # Above which temp score will be 0
-LoW = 5         # Below which wind score will be Max. Wind score attenuates to 0 at HiW.
+LoW = 5         # Below which wind score will be Max. Wind score attenuates to 0 at HiW
 HiW = 17        # Above which wind score will be 0
-LoP = 15         # Below which precip score will be Max. Precip score attenuates to 0 at HiP.
+LoP = 15        # Below which precip score will be Max. Precip score attenuates to 0 at HiP
 HiP = 60        # Above which precip score will be 0
 
 # Relative contributions for temperature, wind and precipitation to overall score / Quality Factor.

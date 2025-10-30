@@ -4,7 +4,7 @@
 
 The DiscWeather application is a Python script that gathers and displays the 6-day weather forecast for a specified location, then uses daylight, temperature, wind and chance of precipitation data to generate an hourly "Disc Weather Quality Index" to help users understand the most favorable upcoming time periods for disc golf at that location. 
 
-The hourly Quality Index numbers are values between 0 and 100 with 100 representing absolutely ideal weather conditions for disc golf 😎, and 0 indicating conditions in which one would very likely not enjoy playing disc golf at all 😒. The Quality Index calculation can be tuned through a variety of settings and thresholds as described further below.
+The hourly Quality Index calculations range in value between 0 and 100 with 100 representing absolutely ideal weather conditions for disc golf 😎, and 0 indicating conditions in which one would very likely not enjoy playing disc golf at all 😒. The Quality Index calculation can be tuned through a variety of settings and thresholds as described further below.
 
 Hourly forecast data are pulled from the U.S. National Weather Service Web API, and geocoding data for user-entered addresses are pulled from the U.S. Census Bureau Geocoder API.
 
@@ -81,21 +81,21 @@ MidHiT = 85     # Above which temp score attenuates to 0 at HiT
 HiT = 95        # Above which temp score will be 0
 LoW = 8         # Below which wind score will be Max. Wind score attenuates to 0 at HiW.
 HiW = 17        # Above which wind score will be 0
-LoP = 19         # Below which precip score will be Max. Precip score attenuates to 0 at HiP.
+LoP = 19        # Below which precip score will be Max. Precip score attenuates to 0 at HiP.
 HiP = 65        # Above which precip score will be 0
 
-# Relative contributions for temperature, wind and precipitation to overall Quality Index.
-# The total for all 3 must add up to 100.
+# Relative contributions for temperature, wind and precipitation to overall Quality Index:
 MaxTScore = 40
 MaxWScore = 35
 MaxPScore = 100 - (MaxTScore + MaxWScore)
+# The total for all 3 maximum sub-scores must add up to 100.
 ```
 
 Below is a visual representation of how the individual scores are generated using the settings/threshold parameters for temperature, wind and precipitation respectively.  
 
 ![Expected DiscWeather plot output](images/Thresholds.jpg)
 
-When modifying settings and thresholds in "dwConfig.py", keep in mind that threshold values must have logically correct relative values for each subscore calculation to execute. 
+When modifying settings and thresholds in "dwConfig.py", keep in mind that threshold values must have logically correct relative values for each sub-score calculation to execute. 
 
 Specifically, the following ordinal relationships for thresholds must be met:
 * *Temperature Score:* LoT < MidLoT <= MidHiT < HiT
@@ -104,7 +104,7 @@ Specifically, the following ordinal relationships for thresholds must be met:
 
 The program will test for proper threshold relationships on start-up and exit with an error message if a threshold relationship problem is detected.
 
-**Also please note:**  MaxTScore + MaxWScore + MaxPScore must always = 100 points total
+**Please note:**  MaxTScore + MaxWScore + MaxPScore must always = 100 points total
 
 ### Managing Favorite Locations Using favorites.txt:
 

@@ -77,11 +77,11 @@ daylightOnly = True     # Set to false to allow night predictions for glow disc 
 
 LoT = 45        # Below which temp score will be 0. Above which score increases to max at MidLoT
 MidLoT = 65     # Above which temp score will be max until MidHiT is reached
-MidHiT = 85     # Above which temp score attenuates to 0 at HiT
+MidHiT = 85     # Above which temp score decreases to 0 at HiT
 HiT = 95        # Above which temp score will be 0
-LoW = 8         # Below which wind score will be Max. Wind score attenuates to 0 at HiW
+LoW = 8         # Below which wind score will be Max. Wind score decreases to 0 at HiW
 HiW = 17        # Above which wind score will be 0
-LoP = 19        # Below which precip score will be Max. Precip score attenuates to 0 at HiP
+LoP = 19        # Below which precip score will be Max. Precip score decreases to 0 at HiP
 HiP = 65        # Above which precip score will be 0
 
 # Relative contributions for temperature, wind and precipitation to overall Quality Index:

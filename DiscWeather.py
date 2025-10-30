@@ -191,7 +191,7 @@ def main():
         w1 = windStr.split(' ')
         w = int(w1[0])
         wind.append(w)
-        scores.append(getScore(t,w,p,d or nightCalc)) #d or nightCalc lets -n cmd line override isDayTime
+        scores.append(getScore(t,w,p,d or nightCalc)) #'d or nightCalc' lets -n cmd line override isDayTime in dwConfig
 
     # Plot the weather parameter and DiscWeather Forecasts using 4 subplots, aligned vertically
     fig, axs = plt.subplots(4, 1, sharex=True, figsize=(16,10))
@@ -245,6 +245,9 @@ def main():
 
 # Functions
 def checkThresh():
+    '''
+    Checks logical relationship of threshold values in dwConfig. Exits with error message if invalid.
+    '''
     if dwConfig.LoT >= dwConfig.MidLoT or dwConfig.MidLoT > dwConfig.MidHiT or dwConfig.MidHiT >= dwConfig.HiT:
         sys.exit('Invalid Temperature thresholds. Modify dwConfig.py to fix.')
     elif dwConfig.LoW >= dwConfig.HiW:
@@ -255,6 +258,11 @@ def checkThresh():
         return
 
 def getLocation(street, city, state, zp):
+    '''
+    Uses U.S. Census Bureau Geocoding API to get latitude/longitude of the street address params passesd in
+    Returns a Boolean indicating successful geocoding of address and latitude / longitude values of address.
+    Lat / Lon are in decimal degrees, represented as floats with 4 digits of precision
+    '''
     LocBASE = "https://geocoding.geo.census.gov/geocoder/"
     return_type = 'locations'
     search_type = 'address'
@@ -298,8 +306,10 @@ def getLocation(street, city, state, zp):
         return False, 0.0, 0.0
 
 def getScore(temp, wind, precip, daylight):
-    # Relative contribution levels for temperature, wind and precipitation to the overall
-    # DiscWeather Quality Index. The total for all 3 must add up to 100.
+    '''
+    Calculates relative contribution levels for temperature, wind and precipitation to the overall
+    DiscWeather Quality Index based on settings / thresholds and returns a Quality Index value as a float. 
+    '''
     MaxTScore = dwConfig.MaxTScore
     MaxWScore = dwConfig.MaxWScore
     MaxPScore = dwConfig.MaxPScore
@@ -357,6 +367,10 @@ def getScore(temp, wind, precip, daylight):
     return tscore + wscore + pscore     # Return overall Quality Index 
 
 def addToFaves(lat, lon):
+    '''
+    Adds a new entry to the favorites.txt file based on user-entered courseName and latitude/longitude
+    values passed into the function.
+    '''
     asking = True
     while asking:
         Alias = input("Input an alphanumeric alias for this location, such as the course name: ").strip()

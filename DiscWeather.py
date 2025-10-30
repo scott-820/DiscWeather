@@ -87,7 +87,7 @@ def main():
         inp = input(askString).strip().upper()
         if inp == 'Q':
             sys.exit('\nUser exited program.\n')
-        elif inp == 'C':
+        elif inp == 'C':                            # Need to validate entries before calling getLocation!
             print('Please enter a US address:\n')
             Street = input('Enter Street number and name: ').strip()
             City = input('Enter US City: ').strip()

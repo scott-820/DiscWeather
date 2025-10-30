@@ -369,7 +369,7 @@ def getScore(temp, wind, precip, daylight):
 def addToFaves(lat, lon):
     '''
     Adds a new entry to the favorites.txt file based on user-entered courseName and latitude/longitude
-    values passed into the function.
+    values passed into the function as strings.
     '''
     asking = True
     while asking:

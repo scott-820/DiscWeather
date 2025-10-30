@@ -7,7 +7,7 @@ import dwConfig
 
 
 def main():
-    # Check for command line argument override of plot point count
+    # Check for command line arguments
     overRide = False
     nightCalc = False
     l = len(sys.argv)
@@ -41,6 +41,7 @@ def main():
 
     # Check thresholds in dwConfig.py. Exit if not valid.
     checkThresh()
+    
     # Get favorite locations from 'favorites.txt' if it exists. Check latitude/longitude values.
     faves = []
     favesExist = False
@@ -81,7 +82,7 @@ def main():
     else:
         askString = 'Enter C(Custom Address) or Q(Quit)'
 
-    # Get User Selection: favorite course, custom address or quit?
+    # Get User Selection: favorite course (if faves exist), custom address or quit?
     asking = True
     while asking:
         inp = input(askString).strip().upper()
@@ -91,16 +92,13 @@ def main():
             print('Please enter a US address:\n')
             Street = input('Enter Street number and name: ').strip()
             City = input('Enter US City: ').strip()
-            State = input('Enter US State: ').strip()
+            State = input('Enter US State: ').strip().upper()
             goodZip = False
             while not goodZip:
                 Z = input('Enter ZIP Code: ').strip()
-                if Z.isnumeric() and len(Z) == 5:
-                    try:
-                        Zip = int(Z)
-                        goodZip = True
-                    except ValueError:
-                        print("Invalid Zip Code entry")
+                if Z.isdigit() and len(Z) == 5:
+                    Zip = int(Z)
+                    goodZip = True
                 else:
                     print("Invalid Zip Code entry")
 

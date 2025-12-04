@@ -2,9 +2,9 @@
 
 ## About DiscWeather
 
-The DiscWeather application is a Python script that gathers and displays the 6-day weather forecast for a specified location, then uses daylight, temperature, wind and chance of precipitation data to generate an hourly "Disc Weather Quality Index" to help users understand the most favorable upcoming time periods for disc golf at that location. 
+DiscWeather is a Python script that gathers and displays the 6-day weather forecast for a specified location, then uses daylight, temperature, wind and chance of precipitation data to generate an hourly "Disc Weather Quality Index" to help users understand the most favorable upcoming time periods for disc golf at that location. 
 
-The hourly Quality Index calculations range in value between 0 and 100 with 100 representing absolutely ideal weather conditions for disc golf 😎, and 0 indicating conditions in which one would very likely not enjoy playing disc golf at all 😒. The Quality Index calculation can be tuned through a variety of settings and thresholds as described further below.
+The hourly Quality Index calculations range between 0 and 100 with 100 representing absolutely ideal weather conditions for disc golf 😎, and 0 indicating conditions in which one would very likely not enjoy playing disc golf at all 😒. The Quality Index calculation can be tuned through a variety of settings and thresholds as described further below.
 
 Hourly forecast data are pulled from the U.S. National Weather Service Web API, and geocoding data for user-entered addresses are pulled from the U.S. Census Bureau Geocoder API.
 
@@ -20,7 +20,7 @@ To run the DiscWeather program on your computer, you must:
     * json
     * matplotlib
     * dateutil
-* Have the files "DiscWeather.py", "dwConfig.py" and "favorites.txt" in the same directory
+* Have the files "DiscWeather.py", "dwConfig.py" and "favorites.txt" in the same directory.
 
 
 ## Usage
@@ -35,7 +35,7 @@ To run the DiscWeather program on your computer, you must:
 DiscWeather.py can be optionally executed with the following command line arguments:
 * "-h" or "--help" will print usage help to the console then halt the program
 * "-n" or "--night" will override the "daylightOnly" boolean value in the "dwConfig.py" file to False, allowing night-time Quality Index calculations for Glow Disc golfing.
-* "-p=*numHrs*" or "--plot=*numHrs*" will override the "numHours" value set in the "dwConfig.py" file with the *numHrs* value passed in with the command line argument.
+* "-p=*numHrs*" or "--plot=*numHrs*" will override the "numHours" value set in the "dwConfig.py" file with the *numHrs* value passed in with the command line argument. *numHrs* must have a value between 12 and 156, inclusive.
 
 For example, using either of the following commands to start DiscWeather will override the "dwConfig.py" "numHours" value and set the number of hours to be plotted by DiscWeather to 24:
 * "python DiscWeather.py -p=24"

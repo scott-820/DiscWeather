@@ -153,7 +153,9 @@ def main():
         sys.exit(f"NWS Points query using {LAT}, {LON} failed. Exiting program.")
     if resp.status_code == 200:
         jresp = resp.json()
-    FcstURL = jresp["properties"]["forecastHourly"]
+        FcstURL = jresp["properties"]["forecastHourly"]
+    else:
+        sys.exit(f"NWS Points query using {LAT}, {LON} failed. Exiting program.")
     
     # If you get here, then you have a valid URL for the hourly forecast of specified location.
     sleep(1)
